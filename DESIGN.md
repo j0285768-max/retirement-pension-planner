@@ -139,9 +139,17 @@
 
 GitHub Pages는 `main` 루트의 `index.html`을 제공합니다. 단일 오프라인 HTML은 `node build.js`로 재생성합니다. 소스 수정 시 테스트와 단일 파일 생성 후 함께 커밋합니다.
 
+### 클라우드 개발환경
+
+`.devcontainer/devcontainer.json`으로 GitHub Codespaces 환경을 구성합니다. 공식 Node.js 24 개발 컨테이너 이미지, `node` 사용자, 8765 포트 전달을 사용합니다. 컨테이너 최초 생성 시 `.devcontainer/verify.cjs`가 계산·HTTP 테스트와 단일 파일 생성을 수행합니다. 환경 시작 시 `start-preview.cjs`가 중복 서버 여부를 확인하고 미리보기 서버를 백그라운드로 실행합니다.
+
+미리보기 서버는 정해진 HTML·CSS·JS 경로만 제공합니다. `HOST`와 `PORT`로 주소를 구성하며 로컬 기본값은 `127.0.0.1:8765`, Codespaces 컨테이너는 `0.0.0.0:8765`입니다. 외부 공개는 Codespaces의 포트 접근 제어를 따릅니다. 개발환경 미리보기와 공개 GitHub Pages는 서로 다른 주소입니다.
+
+개발환경 생성·재개 링크는 `https://codespaces.new/j0285768-max/retirement-pension-planner?quickstart=1`입니다. 사용자 계정에서 생성 후 고유 실행 주소가 정해집니다. 자동 설치할 외부 npm 의존성은 없습니다.
+
 ## 9. 검증
 
-`node --test pension-engine.test.js`로 29개 항목을 검증했습니다. 주요 검증 대상은 다음과 같습니다.
+`node --test pension-engine.test.js server.test.js`로 29개 계산 항목과 5개 HTTP 미리보기 항목을 검증합니다. 주요 검증 대상은 다음과 같습니다.
 
 - 0%·양수·음수 수익률, 기간 맞춤·지정 월액, 잔액 고갈과 음수 잔액 방지
 - 연금소득공제·누진세 구간·연령별 원천징수

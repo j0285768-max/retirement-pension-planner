@@ -1,0 +1,15 @@
+{
+  "name": "연금 나침반 · Cloud Workspace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
+  "remoteUser": "node",
+  "containerEnv": { "HOST": "0.0.0.0", "PORT": "8765" },
+  "forwardPorts": [8765],
+  "portsAttributes": {
+    "8765": { "label": "연금 계산기 미리보기", "onAutoForward": "openBrowser" }
+  },
+  "postCreateCommand": "node .devcontainer/verify.cjs",
+  "postStartCommand": "node .devcontainer/start-preview.cjs",
+  "customizations": {
+    "vscode": { "settings": { "files.autoSave": "afterDelay" } }
+  }
+}

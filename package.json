@@ -1,0 +1,14 @@
+{
+  "name": "retirement-pension-planner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "연금 나침반: 퇴직 후 연금 설계 계산기",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "test": "node --test pension-engine.test.js server.test.js",
+    "build": "node build.js",
+    "verify": "node .devcontainer/verify.cjs"
+  }
+}

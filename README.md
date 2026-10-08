@@ -4,6 +4,24 @@
 
 **[계산기 실행](https://j0285768-max.github.io/retirement-pension-planner/)** · **[설계 문서](DESIGN.md)** · **[사용 안내](사용안내.md)**
 
+**[클라우드에서 개발하기](https://codespaces.new/j0285768-max/retirement-pension-planner?quickstart=1)** · **[브라우저에서 소스 편집](https://github.dev/j0285768-max/retirement-pension-planner)**
+
+## 클라우드 개발 · GitHub Codespaces
+
+위 **클라우드에서 개발하기** 링크를 열고 GitHub에 로그인한 뒤 `Create codespace`를 누르세요. 이미 같은 저장소의 환경이 있으면 재개할 수 있습니다. 이 링크는 개발환경 생성·재개 링크이며, 이미 실행 중인 특정 컨테이너 주소는 아닙니다.
+
+- Node.js 24 개발환경과 소스 편집기가 브라우저에서 열립니다.
+- 최초 생성 시 계산 테스트·HTTP 테스트와 단일 파일 생성을 자동 실행합니다.
+- 환경 시작 시 미리보기 서버가 자동 실행되고 8765 포트가 전달됩니다.
+- 미리보기가 자동으로 열리지 않으면 하단 **Ports**에서 8765의 **Open in Browser**를 누르세요.
+- 파일을 수정한 뒤 미리보기 페이지를 새로고침하면 반영됩니다.
+- `npm test`: 검증 / `npm run build`: 단일 파일 생성 / `npm run dev`: 서버 수동 실행
+- 변경을 `main`에 커밋·푸시하면 GitHub Pages 게시본도 갱신됩니다.
+
+개발 미리보기 주소는 각 Codespace에 따라 다르고 기본적으로 본인 인증이 필요합니다. 일반 사용자에게 공유할 계산기 주소는 위 **계산기 실행** 링크를 사용하세요. Codespaces의 이용 가능량과 비용은 본인 GitHub 계정의 플랜·사용량에 따릅니다. 작업이 끝나면 Codespace를 중지할 수 있습니다.
+
+설치 없이 소스만 편집할 때는 **브라우저에서 소스 편집** 링크를 사용합니다. `github.dev`에는 코드 실행·테스트용 터미널이 없으므로 실행 검증은 Codespaces에서 하세요.
+
 ## 주요 기능
 
 - 연금별 개시 시점, 수령기간, 월 수령액, 수수료 차감 후 연 수익률 입력
@@ -35,12 +53,12 @@
 외부 실행 의존성이 없는 HTML/CSS/JavaScript 프로그램입니다. 개발 검증에는 Node.js가 필요합니다.
 
 ```sh
-node --test pension-engine.test.js
+node --test pension-engine.test.js server.test.js
 node build.js
 node server.js
 ```
 
-- 테스트: 29개 계산 항목
+- 테스트: 29개 계산 항목 + 5개 HTTP 미리보기 항목
 - 단일 파일 생성: `node build.js`
 - 로컬 미리보기: `http://127.0.0.1:8765`
 - GitHub Pages: `main` 브랜치의 루트(`/`)를 게시 소스로 사용
